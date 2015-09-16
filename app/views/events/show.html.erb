@@ -35,12 +35,13 @@
                 <%= @event.state %>
                 <%= @event.zipcode %>
             </div>
+
             <div>
               <h3>Who's Attending (<%= @event.users.count %>)</h3><br>
             </div>
 
 
-<div class="cold-md-4">
+            <div class="cold-md-4">
             <% @event.users.each do |user| %>
               <% if user.distance_to(@event) <= 1 && Time.now >= @event.date %>
                 <div class="well">
@@ -62,19 +63,20 @@
                           </h4>
                       </div>
                         <% if user != current_user %>
-                        <% if current_user.following?(user) %>
-                          <%= link_to "Didn't Meet", unfollow_user_path(user), class: "btn btn-default", method: :post %>
-                        <% else %>
-                          <%= link_to "We Met", follow_user_path(user), class: "btn btn-default", method: :post %>
-                        <% end %>
+                          <% if current_user.following?(user) %>
+                            <%= link_to "Didn't Meet", unfollow_user_path(user), class: "btn btn-default", method: :post %>
+                          <% else %>
+                            <%= link_to "We Met", follow_user_path(user), class: "btn btn-default", method: :post %>
+                          <% end %>
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal-<%= user.id %>">
                         Notes</button>
                     </div>
                   </div>
+                </div>
                   <%= render :partial =>'shared/modal', :locals => {:user => user.id} %>
-              <% end %>
-              <% end %>
+                        <% end %>
+
             </div>
 
-    </div>
 </div>
+<% end %>
