@@ -10,7 +10,7 @@
 
 <hr>
 
-      <div class=" btn btn-default">
+      <div class=" btn btn-default button-color">
         <% if @event.users.include? current_user %>
           <%= link_to "Unattend Event", unattend_event_path(@event.id), method: :post %>
         <% else %>
@@ -18,10 +18,11 @@
         <% end %>
       </div>
 <hr>
+
         <% if @event.image_url.present? %>
         <img class="img-responsive" src='<%= @event.image_url %>' alt=""></br>
         <% else %>
-          <%= image_tag('networking_function.jpg')%>
+          <%= image_tag('networking_function.jpg')%></br>
         <% end %>
 
 <hr>
@@ -32,7 +33,7 @@
 
     </div>
 
-        <div class="col-md-4">
+        <div class="container col-md-4">
             <div class="well">
                 <h4>Location:</h4>
                 <%= @event.venue_name %></br>
@@ -47,10 +48,9 @@
             </div>
 
 
-            <div class="cold-md-4">
             <% @event.users.each do |user| %>
               <% if user.distance_to(@event) <= 1 && Time.now >= @event.date %>
-                <div class="well">
+              <div class="well">
                   <div class="media">
               <% else %>
                 <div class="well">
@@ -63,25 +63,27 @@
                         <% if user != current_user %>
                           <h4 class="media-heading"><%= link_to user.name, user_path(user[:id]) %>
                         <% else %>
-                          <h4 class="media=heading"><%= link_to user.name, root_path %>
+                          <h4 class="media-heading"><%= link_to user.name, root_path %>
                         <% end %>
                             <br><small><%= user.headline %></small>
                           </h4>
                       </div>
+
                         <% if user != current_user %>
                           <% if current_user.following?(user) %>
                             <%= link_to "Didn't Meet", unfollow_user_path(user), class: "btn btn-default", method: :post %>
                           <% else %>
                             <%= link_to "We Met", follow_user_path(user), class: "btn btn-default", method: :post %>
                           <% end %>
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal-<%= user.id %>">
-                        Notes</button>
-                    </div>
-                  </div>
-                </div>
-                  <%= render :partial =>'shared/modal', :locals => {:user => user.id} %>
-              <% end %>
-    </div>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal-<%= user.id %>">Notes</button>
+                        <% end %>
 
-</div>
-<% end %>
+              </div>
+                              <%= render :partial =>'shared/modal', :locals => {:user => user.id} %>
+
+                            </div>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
