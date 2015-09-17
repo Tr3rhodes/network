@@ -20,7 +20,7 @@
         <% if @event.image_url.present? %>
         <img class="img-responsive" src='<%= @event.image_url %>' alt=""></br>
         <% else %>
-          <%= image_tag('networking_function.jpg')%></br>
+          <%= image_tag('networking_function.jpg')%><br>
         <% end %>
 
 <hr>
@@ -34,7 +34,7 @@
         <div class="container col-md-4">
             <div class="well">
                 <h4>Location:</h4>
-                <%= @event.venue_name %></br>
+                <%= @event.venue_name %><br>
                 <%= @event.address %></br>
                 <%= @event.city %>
                 <%= @event.state %>

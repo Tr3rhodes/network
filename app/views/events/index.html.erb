@@ -12,7 +12,7 @@
       <div class="col-md-4 portfolio-item">
         <div class="thumbnail event-logo">
           <% if event.image_url.present? %>
-          <img class="img-responsive event-logo" src='<%= event.image_url %>' alt=""></br>
+          <img class="img-responsive event-logo" src='<%= event.image_url %>' alt=""><br>
           <% else %>
             <%= image_tag('networking_function.jpg')%>
           <% end %>
@@ -34,6 +34,6 @@
           </div>
       </div>
       <% end %>
-  </div></br></br>
+  </div><br><br>
     <% end %>
 </div>
