@@ -18,8 +18,8 @@
         <% end %>
       </div>
 <hr>
-        <% if event.image_url.present? %>
-        <img class="img-responsive" src='<%= event.image_url %>' alt=""></br>
+        <% if @event.image_url.present? %>
+        <img class="img-responsive" src='<%= @event.image_url %>' alt=""></br>
         <% else %>
           <%= image_tag('networking_function.jpg')%>
         <% end %>
