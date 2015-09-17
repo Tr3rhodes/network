@@ -6,7 +6,7 @@
       </h1>
     </div>
   </div></br>
-  <% @user.events.sort {|a,b| a.date <=> b.date}.each_slice(4) do |row| %>
+  <% @events.sort{|a,b| a.date <=> b.date}.each_slice(3) do |row| %>
   <div class="row">
     <% row.each do |event| %>
       <div class="col-md-4 portfolio-item">
