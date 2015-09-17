@@ -107,10 +107,4 @@ class EventsController < ApplicationController
       params.require(:events).permit(:id, :lat, :lon, :external_id, :group_name, :description, :date, :venue_name, :city, :state, :zipcode)
     end
 
-
-  private
-
-    # def categories(params)
-    #   params.require(:events).permit(:lat, :lon, :city, :state, :name, :description, :picture, :time)
-    # end
   end

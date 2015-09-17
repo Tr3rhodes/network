@@ -16,7 +16,11 @@
         <% end %>
       </div>
 <hr>
-      <img class="img-responsive" src='<%= @event.image_url %>' alt="">
+        <% if event.image_url.present? %>
+        <img class="img-responsive" src='<%= event.image_url %>' alt=""></br>
+        <% else %>
+          <%= image_tag('networking_function.jpg')%>
+        <% end %>
 
 <hr>
 

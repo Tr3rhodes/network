@@ -15,7 +15,6 @@ class NotesController < ApplicationController
           format.html { redirect_to :back }
           format.js { render :new }
         end
-
   end
 
    def index

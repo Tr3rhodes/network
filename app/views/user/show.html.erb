@@ -42,7 +42,11 @@
           <% row.each do |event| %>
           <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-              <img class="event-image" src="<%= event.image_url %>" alt="">
+              <% if event.image_url.present? %>
+              <img class="img-responsive" src='<%= event.image_url %>' alt=""></br>
+              <% else %>
+                <%= image_tag('networking_function.jpg')%>
+              <% end %>
               <div class="caption">
                 <h3><%= link_to event.group_name, event_path(event[:id]) %></h3>
                 <p><%= event.date.strftime("%B %d, %Y %I:%M %p") %></p>

@@ -7,12 +7,19 @@
     </div>
   </div>
   <% @events.each_slice(3) do |row| %>
-  <div class="row">
+  <div class="row text-center">
     <% row.each do |event| %>
-      <div class="col-md-4 portfolio-item">
+      <div class="col-md-4 hero-feature">
+    <div class= "well">
+        <div class="thumbnail">
+          <% if event.image_url.present? %>
+          <img class="img-responsive" src='<%= event.image_url %>' alt=""></br>
+          <% else %>
+            <%= image_tag('networking_function.jpg')%>
+          <% end %>
 
-        <img class="img-responsive" src='<%= event.image_url %>' alt=""></br>
-
+      </div>
+    </div>
         <h3><%= link_to event.group_name, event_path(event)%></h3>
         <p><%= event.date.strftime("%B %d, %Y %I:%M %p") %></p>
         <p><%= strip_tags(event.description).truncate(200) %></p>
@@ -26,7 +33,8 @@
             <div class="btn btn-default">
               <%= link_to "MORE INFO", event_path(event["id"])%>
             </div>
-      </div>
+
+    </div>
       <% end %>
   </div></br>
     <% end %>

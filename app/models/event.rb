@@ -48,11 +48,8 @@ class Event < ActiveRecord::Base
         u.urlname = event["group"]["urlname"]
         if u.urlname.blank?
           res = JSON.parse ApiCallers::HttpRequest.new("http://api.meetup.com/#{u.urlname}?key=#{MeetupClient.config.api_key}").make_request
-          if res["group_photo"]
-            u.image_url = res["group_photo"].select{|photo| photo.has_key?("highres_link")}.first["highres_link"]
-            if u.image_url.blank?
-              image_tag("netowrking_function.jpg")
-            end
+          if res["photos"].blank?
+            u.image_url = res["photos"].select{|photo| photo.has_key?("photo_link")}.first["photo_link"]
           end
         end
         u.save!

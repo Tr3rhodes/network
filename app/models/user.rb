@@ -36,6 +36,4 @@ class User < ActiveRecord::Base
       authored_notes.where(user: user)
     end
 
-
-
 end
