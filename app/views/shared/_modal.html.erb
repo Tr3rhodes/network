@@ -9,7 +9,7 @@
               <div class= "container-fluid">
                <%= form_for(Note.new) do  |f| %>
                  <div class="field">
-                   <textarea name="note[body]" id="note_body" style="margin: 0px; width: 542px; height: 174px;"></textarea>
+                   <textarea name="note[body]" class="img-responsive" id="note_body" style="margin: 0px; width: 542px; height: 174px;"></textarea>
                  </div>
                 <%= f.hidden_field :user_id, :value => user %>
                  <div class="actions">
