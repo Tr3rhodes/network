@@ -9,21 +9,20 @@
     <% if user != current_user %>
     <div class="col-lg-4 col-sm-6 text-center">
       <% if current_user.authored_notes.exists?(user: user) == true %>
-      <% if current_user.following?(user) %>
-        <img class="img-circle" src= "<%= user.image_url %>" alt="">
-        <h3>
-          <span class="glyphicon glyphicon-ok"></span><%= link_to user.name, user_path(user[:id]) %>
-          <br><small><%= user.company%> - <%= user.title %></small>
-        </h3>
-      <% else %>
-        <img class="img-circle" src= "<%= user.image_url %>" alt="">
-        <h3>
-          <%= link_to user.name, user_path(user[:id]) %>
-          <br><small><%= user.company%> - <%= user.title %></small>
-        </h3>
-      <% end %>
-    </div>
-  </div>
+          <% if current_user.following?(user) %>
+            <img class="img-circle" src= "<%= user.image_url %>" alt="">
+            <h3>
+              <span class="glyphicon glyphicon-ok"></span><%= link_to user.name, user_path(user[:id]) %>
+              <br><small><%= user.company%> - <%= user.title %></small>
+            </h3>
+          <% else %>
+            <img class="img-circle" src= "<%= user.image_url %>" alt="">
+            <h3>
+              <%= link_to user.name, user_path(user[:id]) %>
+              <br><small><%= user.company%> - <%= user.title %></small>
+            </h3>
+          <% end %>
+        </div>
       <% else %>
         <p>You haven't taken any notes yet</p>
       <% end %>
@@ -31,3 +30,4 @@
     <% end %>
     <% end %>
   </div>
+</div>
