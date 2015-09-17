@@ -46,9 +46,9 @@ class Event < ActiveRecord::Base
         u.lat = event["venue"] ? event["venue"]["lat"] : 0
         u.lon = event["venue"] ? event["venue"]["lon"] : 0
         u.urlname = event["group"]["urlname"]
-        if u.urlname.blank?
+        if u.image_url.blank?
           res = JSON.parse ApiCallers::HttpRequest.new("http://api.meetup.com/#{u.urlname}?key=#{MeetupClient.config.api_key}").make_request
-          if res["photos"].blank?
+          unless res["photos"].blank?
             u.image_url = res["photos"].select{|photo| photo.has_key?("photo_link")}.first["photo_link"]
           end
         end
